@@ -189,8 +189,9 @@ pub async fn invoke_method(channel: MethodChannel) -> Result<String, Box<dyn Err
 
                             if res {
                                 result = format!("Print status {}", res);
+                                println!("{}", result);
+                                break;
                             }
-                            println!("{}", result);
                         }
                     }
                 }
