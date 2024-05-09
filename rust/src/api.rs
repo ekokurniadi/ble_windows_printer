@@ -181,17 +181,14 @@ pub async fn invoke_method(channel: MethodChannel) -> Result<String, Box<dyn Err
                         info!("discovered characteristics");
 
                         info!("start print");
-                        for characteristic in characteristics {
-                            let res = characteristic
-                                .write(bytes.as_ref().unwrap())
-                                .await
-                                .is_ok();
+                        let res = characteristics[0]
+                            .write(bytes.as_ref().unwrap())
+                            .await
+                            .is_ok();
 
-                            if res {
-                                result = format!("Print status {}", res);
-                                println!("{}", result);
-                                break;
-                            }
+                        if res {
+                            result = format!("Print status {}", res);
+                            println!("{}", result);
                         }
                     }
                 }
